@@ -1,0 +1,109 @@
+:root {
+  --secondary-color: rgb(185, 185, 185);
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+
+  background-color: rgb(30, 30, 30);
+}
+
+#trail {
+  width: 50px;
+  height: 50px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+
+  position: fixed;
+  left: 0px;
+  top: 0px;
+
+  z-index: 10000;
+
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+body:hover > #trail {
+  opacity: 1;
+}
+
+#menu {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+#menu-items {
+  width: fit-content;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  z-index: 2;
+}
+
+#menu-items h1 {
+  display: block;
+  font-size: 4rem;
+  color: whitesmoke;
+  margin: 0;
+  transition: color 400ms ease;
+}
+
+#menu-items:hover > h1 {
+  color: var(--secondary-color);
+}
+
+#menu-items:hover ~ #menu-background-pattern {
+  background-size: 11vmin 11vmin;
+  opacity: 0.5;
+}
+
+#menu-items h1:hover {
+  cursor: pointer;
+  color: whitesmoke;
+}
+
+#menu-background-pattern {
+  height: 100vh;
+  width: 100vw;
+
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.1) 9%,
+    transparent 9%
+  );
+  background-position: 0% 0%;
+  background-size: 12vmin 12vmin;
+
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+
+  transition:
+    opacity 800ms ease,
+    background-size 800ms ease,
+    background-position 800ms ease;
+}
+
+#menu[data-active-index="0"] > #menu-background-pattern {
+  background-position: 0% -25%;
+}
+
+#menu[data-active-index="1"] > #menu-background-pattern {
+  background-position: 0% -50%;
+}
+
+#menu[data-active-index="2"] > #menu-background-pattern {
+  background-position: 0% -75%;
+}
+
+#menu[data-active-index="3"] > #menu-background-pattern {
+  background-position: 0% -100%;
+}
